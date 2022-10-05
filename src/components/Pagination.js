@@ -20,9 +20,9 @@ class Pagination {
             this.prePage()
         })
 
-        this.$preLink = document.createElement('a')
+        this.$preLink = document.createElement('span')
         this.$preLink.classList.add('page-link')
-        this.$preLink.href = '#'
+
         this.$preLink.innerHTML = '&laquo;'
 
         this.$nextBtn = document.createElement('li')
@@ -31,15 +31,11 @@ class Pagination {
             this.nextPage()
         })
 
-        this.$nextLink = document.createElement('a')
+        this.$nextLink = document.createElement('span')
         this.$nextLink.classList.add('page-link')
-        this.$nextLink.href = '#'
+
         this.$nextLink.innerHTML = '&raquo;'
 
-        this.$numLink = document.createElement('a')
-        this.$numLink.classList.add('page-link')
-        this.$numLink.href = '#'
-        this.$numLink.innerHTML = '1'
 
     }
     prePage() {
@@ -65,13 +61,13 @@ class Pagination {
     }
 
     loadPage() {
-        const numTemp = (link, number) => {
+        const numTemp = (number) => {
             this.$numBtn = document.createElement('li')
             this.$numBtn.classList.add('page-item')
 
-            this.$numLink = document.createElement('a')
+            this.$numLink = document.createElement('span')
             this.$numLink.classList.add('page-link')
-            this.$numLink.href = link
+            this.$numLink.setAttribute('role', 'button')
             this.$numLink.innerHTML = number
 
             this.$container.appendChild(this.$numBtn)
@@ -93,7 +89,7 @@ class Pagination {
             })
         }
         for (let i = 1; i <= this.dataLength; i++) {
-            numTemp('#', i)
+            numTemp(i)
         }
     }
     render() {
