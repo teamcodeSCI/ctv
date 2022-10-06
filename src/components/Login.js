@@ -1,4 +1,7 @@
 import Input from "./Input.js";
+import Search from "./Search.js";
+
+const search = new Search()
 
 const data = {
     phoneNumber: '0985834484',
@@ -98,6 +101,9 @@ class Login {
         this.$registBtn.className = `btn btn-lg btn-outline-light mt-3`
         this.$registBtn.type = 'button'
         this.$registBtn.innerHTML = `Register Now!`
+        this.$registBtn.addEventListener('click', () => {
+            this.register()
+        })
 
         this.$phoneNumber = new Input('bi bi-phone', 'text', 'Số điện thoại')
         this.$password = new Input('bi bi-lock', 'password', 'Mật khẩu')
@@ -115,9 +121,16 @@ class Login {
             this.$password.fail()
             return;
         }
+        localStorage.setItem('phoneNumber', this.$phoneNumber.getInput().value)
+        localStorage.setItem('password', this.$password.getInput().value)
         this.$phoneNumber.success()
         this.$password.success()
+        window.location.reload()
         return;
+    }
+    register() {
+        window.location.hash = '#register'
+        window.location.reload()
     }
     render() {
         this.$bg.appendChild(this.$container)
