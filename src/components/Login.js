@@ -1,3 +1,4 @@
+import { getComponent } from "../util/getComponent.js";
 import Input from "./Input.js";
 import Search from "./Search.js";
 
@@ -121,16 +122,17 @@ class Login {
             this.$password.fail()
             return;
         }
-        localStorage.setItem('phoneNumber', this.$phoneNumber.getInput().value)
-        localStorage.setItem('password', this.$password.getInput().value)
+        localStorage.setItem('isLogin', true)
         this.$phoneNumber.success()
         this.$password.success()
-        window.location.reload()
+        getComponent()
         return;
+
     }
     register() {
-        window.location.hash = '#register'
-        window.location.reload()
+        sessionStorage.setItem('isRegister', true)
+        getComponent()
+        return
     }
     render() {
         this.$bg.appendChild(this.$container)
