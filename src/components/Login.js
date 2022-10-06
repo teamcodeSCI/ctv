@@ -5,7 +5,7 @@ import Search from "./Search.js";
 const search = new Search()
 
 const data = {
-    phoneNumber: '0985834484',
+    phoneNumber: '123456789',
     password: '123456aA'
 }
 class Login {
