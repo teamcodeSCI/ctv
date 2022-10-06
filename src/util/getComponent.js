@@ -7,6 +7,7 @@ import Register from "../components/Register.js";
 const home = new Home()
 const login = new Login()
 const register = new Register()
+
 export const getComponent = () => {
     if (sessionStorage.getItem('isRegister')) {
         setComponent(register)
