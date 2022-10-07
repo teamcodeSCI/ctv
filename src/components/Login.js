@@ -1,13 +1,8 @@
+import { login } from "../apis/user.js";
 import { getComponent } from "../util/getComponent.js";
+import { loading } from "../util/util.js";
 import Input from "./Input.js";
-import Search from "./Search.js";
-
-const search = new Search()
-
-const data = {
-    phoneNumber: '123456789',
-    password: '123456aA'
-}
+import Loading from "./Loading.js";
 class Login {
     $bg;
     $container;
@@ -38,7 +33,10 @@ class Login {
     $phoneNumber
     $password;
 
+    $loading
     constructor() {
+        this.$loading = new Loading()
+
         this.$bg = document.createElement('div')
         this.$bg.className = `bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent`
 
@@ -113,21 +111,22 @@ class Login {
         this.$btnLogin.classList.add('btn', 'btn-primary')
         this.$btnLogin.innerHTML = 'Đăng nhập'
         this.$btnLogin.addEventListener('click', () => {
-            this.login()
+            this.clickLogin()
         })
     }
-    login() {
-        if (this.$phoneNumber.getInput().value !== data.phoneNumber || this.$password.getInput().value !== data.password) {
+
+    async clickLogin() {
+        loading(this.$bg, true)
+        const dataLogin = await login(this.$phoneNumber.getInput().value, this.$password.getInput().value)
+        loading(this.$bg, false)
+        if (!dataLogin) {
             this.$phoneNumber.fail()
             this.$password.fail()
-            return;
+            return
         }
-        localStorage.setItem('isLogin', true)
-        this.$phoneNumber.success()
-        this.$password.success()
+        localStorage.setItem('isLogin', dataLogin.isLogin)
         getComponent()
-        return;
-
+        return
     }
     register() {
         sessionStorage.setItem('isRegister', true)
