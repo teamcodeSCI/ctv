@@ -90,3 +90,24 @@ html:not([dir=rtl]) .nav {
     background-color: var(--bs-dark, #212333);
     background-image: linear-gradient(45deg, var(--bs-dark-start, #3c4b64) 0%, var(--bs-dark-stop, #212333 100%));
 }
+
+.sidebar {
+    height: 100vh;
+    min-width: 280px;
+    background-color: #232938;
+}
+
+.sidebar hr {
+    border-color: rgba(255, 255, 255, 0.6);
+    margin: 1.25rem 0
+}
+
+.sidebarItem {
+    .text-cus {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    .text-cus:hover,
+    .text-cus:focus {
+        color: white;
+    }
+}
