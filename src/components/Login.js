@@ -2,7 +2,6 @@ import { login } from "../apis/user.js";
 import { getComponent } from "../util/getComponent.js";
 import { loading } from "../util/util.js";
 import Input from "./Input.js";
-import Loading from "./Loading.js";
 class Login {
     $bg;
     $container;
@@ -33,10 +32,7 @@ class Login {
     $phoneNumber
     $password;
 
-    $loading
     constructor() {
-        this.$loading = new Loading()
-
         this.$bg = document.createElement('div')
         this.$bg.className = `bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent`
 
