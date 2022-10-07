@@ -8,51 +8,63 @@
     <title>sidebar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    .sidebar {
+        height: 100vh;
+        min-width: 280px;
+        background-color: #232938;
+    }
+    
+    .sidebar hr {
+        background-color: rgba(255, 255, 255, 0.6);
+        margin: 1.25rem
+    }
+    
+    .sidebar .text-cus {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .sidebar .text-cus:hover,
+    .sidebar .text-cus:focus {
+        color: white;
+    }
+</style>
 
 <body>
-    <div class="sidebar">
-        <div class="sidebar-box d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>Nguyễn Văn Tuấn</strong>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active d-flex align-items-center gap-2" aria-current="page">
-                        <i class="bi bi-file-earmark-pdf"></i>
-                        Tài liệu
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white d-flex align-items-center gap-2">
-                        <i class="bi bi-person-lines-fill"></i>
-                        Quản lí khách hàng
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white d-flex align-items-center gap-2">
-                        <i class="bi bi-flag"></i>
-                        Báo cáo
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white d-flex align-items-center gap-2">
-                        <i class="bi bi-chat-dots"></i>
-                        Quản lí giao tiếp
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <a href="#" class="d-flex gap-3 align-items-center text-white text-decoration-none" id="dropdownUser1"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-box-arrow-right"></i>
-                Đăng xuất
-            </a>
-        </div>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-cus col-2">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>Nguyễn Văn Tuấn</strong>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li>
+                <a href="#" class="nav-link active text-cus d-flex align-items-center gap-2">
+                    <i class="bi bi-flag"></i> Báo cáo
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link d-flex text-cus align-items-center gap-2">
+                    <i class="bi bi-file-earmark-pdf"></i> Tài liệu
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-cus d-flex align-items-center gap-2">
+                    <i class="bi bi-person-lines-fill"></i> Quản lí khách hàng
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="nav-link text-cus d-flex align-items-center gap-2">
+                    <i class="bi bi-chat-dots"></i> Quản lí giao tiếp
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <a href="#" class="d-flex gap-3 align-items-center text-cus text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-box-arrow-right"></i> Đăng xuất
+        </a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
