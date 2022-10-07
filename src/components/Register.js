@@ -1,5 +1,4 @@
 import { getComponent } from "../util/getComponent.js";
-
 class Register {
     $bg;
     $container;
