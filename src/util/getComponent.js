@@ -1,22 +1,18 @@
-import { setComponent } from "./util.js"
-import Login from "../components/Login.js";
+import { menu } from "./routes.js";
 
-import Home from "../components/Home.js";
-import Register from "../components/Register.js";
-
-const home = new Home()
-const login = new Login()
-const register = new Register()
-
-export const getComponent = () => {
-    if (sessionStorage.getItem('isRegister')) {
-        setComponent(register)
-        return;
+let currentComponent = null;
+export const setComponent = (container, component) => {
+    if (currentComponent) {
+        container.removeChild(currentComponent);
     }
-    if (!localStorage.getItem('isLogin')) {
-        setComponent(login)
-        return
+    currentComponent = container.appendChild(component.render())
+}
+export const getComponent = (container) => {
+    for (let item of menu) {
+        if (sessionStorage.getItem('link') === item.link) {
+            setComponent(container, item.component)
+            return;
+        }
     }
-    setComponent(home)
-    return
+    setComponent(container, menu[0].component)
 }

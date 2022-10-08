@@ -1,3 +1,3 @@
-import { getComponent } from "./util/getComponent.js";
+import { getPage } from "./util/getPage.js";
 
-getComponent()
+getPage()

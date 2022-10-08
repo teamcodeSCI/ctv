@@ -1,3 +1,4 @@
+import { getComponent } from "../util/getComponent.js"
 import { menu } from "../util/routes.js"
 import SidebarItem from "./SidebarItem.js"
 
@@ -9,8 +10,9 @@ class Sidebar {
     $line
     $menu
     $menuItem
-
-    constructor() {
+    $component
+    constructor(component) {
+        this.$component = component
         this.$container = document.createElement('div')
         this.$container.className = 'sidebar d-flex flex-column flex-shrink-0 p-3 text-cus col-2'
 
@@ -37,7 +39,7 @@ class Sidebar {
             this.$menuItem = new SidebarItem(item.icon, item.text)
             this.$menuItem.render().addEventListener('click', () => {
                 sessionStorage.setItem('link', item.link)
-                console.log(sessionStorage.getItem('link'));
+                getComponent(this.$component)
             })
             this.$menu.appendChild(this.$menuItem.render())
         }

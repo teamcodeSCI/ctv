@@ -1,5 +1,5 @@
 import { login } from "../apis/user.js";
-import { getComponent } from "../util/getComponent.js";
+import { getPage } from "../util/getPage.js";
 import { loading } from "../util/util.js";
 import Input from "./Input.js";
 class Login {
@@ -121,12 +121,12 @@ class Login {
             return
         }
         localStorage.setItem('isLogin', dataLogin.isLogin)
-        getComponent()
+        getPage()
         return
     }
     register() {
         sessionStorage.setItem('isRegister', true)
-        getComponent()
+        getPage()
         return
     }
     render() {

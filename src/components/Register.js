@@ -1,4 +1,4 @@
-import { getComponent } from "../util/getComponent.js";
+import { getPage } from "../util/getPage.js";
 class Register {
     $bg;
     $container;
@@ -48,7 +48,7 @@ class Register {
     }
     back() {
         sessionStorage.removeItem('isRegister')
-        getComponent()
+        getPage()
     }
     render() {
         this.$bg.appendChild(this.$container)
