@@ -10,7 +10,7 @@ const communicate = new Communicate()
 export const menu = [{
     icon: 'bi bi-flag',
     text: 'Báo cáo',
-    link: '',
+    link: 'report',
     component: report
 }, {
     icon: 'bi bi-file-earmark-pdf',

@@ -35,6 +35,10 @@ class Sidebar {
     renderMenu() {
         for (let item of menu) {
             this.$menuItem = new SidebarItem(item.icon, item.text)
+            this.$menuItem.render().addEventListener('click', () => {
+                sessionStorage.setItem('link', item.link)
+                console.log(sessionStorage.getItem('link'));
+            })
             this.$menu.appendChild(this.$menuItem.render())
         }
         return this.$menu
