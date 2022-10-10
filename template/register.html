@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/sass/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent">
+        <div class="container">
+            <div class="row">
+                <h1>Đăng ký</h1>
+                <div class="col-md-6 p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="text-medium-emphasis"><strong>Thông tin khách hàng</strong></h5>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-person-video2"></i></span>
+                                <input class="form-control" type="text" id="idname" placeholder="Mã cộng tác viên">
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-telephone-plus-fill"></i></span>
+                                <input class="form-control" type="number" id="phone1" placeholder="Điện thoại 1*">
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="fs-5 bi bi-person"></i></span>
+                                <input class="form-control" type="text" id="username" placeholder="Tên cộng tác viên (tùy chọn)">
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-telephone-plus-fill"></i></span>
+                                <input class="form-control" type="number" id="phone2" placeholder="Điện thoại 2*">
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-card-list"></i></span>
+                                <input class="form-control" type="number" id="cccd" placeholder="CMTND/CCCD">
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-upload"></i></span>
+                                <input class="form-control" type="file" id="formFileDisabled" primary>
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-envelope"></i></span>
+                                <input class="form-control" type="email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="text-medium-emphasis"><strong>Tương tác</strong></h5>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-building"></i></span>
+                                <select id="company" class="form-select" aria-label="Default select example">
+                            <option selected>Công ty</option>
+                            <option value="1">THẨM MỸ VIỆN ĐÔNG Á KIM MÃ</option>
+                            <option value="2">HỒNG HÀ</option>
+                            <option value="3">KANGNAM</option>
+                        </select>
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-award"></i></span>
+                                <select id="trademark" class="form-select" aria-label="Default select example">
+                            <option selected>Thương hiệu</option>
+                            <option value="1">ĐÔNG Á</option>
+                            <option value="2">HỒNG HÀ</option>
+                            <option value="3">KANGNAM</option>
+                        </select>
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-people-fill"></i></span>
+                                <select id="SourceGroup" class="form-select" aria-label="Default select example">
+                            <option selected>Nhóm nguồn</option>
+                            <option value="1">CỘNG TÁC VIÊN</option>
+                            <option value="2">NHÂN VIÊN</option>
+                        </select>
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-person-lines-fill"></i></span>
+                                <select id="source" class="form-select" aria-label="Default select example">
+                            <option selected>Nguồn</option>
+                            <option value="1">CTV_Bên ngoài(Sale&MKT)</option>
+                            <option value="2">CTV_Bên ngoài(Chi nhánh)</option>
+                            <option value="3">CTV_Nội bộ_Bác sĩ</option>
+                            <option value="4">CTV_Nội bộ_CBNV</option>
+                            <option value="5">CTV_Khách hàng hợp tác</option>
+                        </select>
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                            <i class="bi bi-list-task"></i></span>
+                                <select id="status" class="form-select" aria-label="Default select example">
+                            <option selected>Trạng thái</option>
+                            <option value="1">Chưa xử lý</option>
+                            <option value="2">Đã xử lý</option>
+                        </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="text-medium-emphasis"><strong>Bank</strong></h5>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                        <i class="bi bi-bank2"></i></span>
+                                <input class="form-control" type="text" id="bank" placeholder="Ngân hàng">
+                            </div>
+                            <div class="input-group mb-3"><span class="input-group-text">
+                        <i class="bi bi-123"></i></span>
+                                <input class="form-control" type="number" id="numberBank" placeholder="Số thẻ ngân hàng">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-3" type="button">Register</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+
+</html>

@@ -68,7 +68,7 @@ html:not([dir=rtl]) .nav {
 }
 
 .progress-thin {
-    height: 4px;
+    height: 2px;
 }
 
 .bg-success-gradient {
@@ -110,4 +110,12 @@ html:not([dir=rtl]) .nav {
     .text-cus:focus {
         color: white;
     }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    margin: 0 !important;
 }

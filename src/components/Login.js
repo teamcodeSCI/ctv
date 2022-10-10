@@ -12,20 +12,15 @@ class Login {
     $cardLeft;
     $cardLeftBody;
     $cardLeftTitle;
-    $cardLeftText;
     $cardLeftRow;
 
-    $btnGroupRow;
-    $btnGroupLeft;
     $btnGroupRight;
 
     $btnLogin;
-    $btnForgot
 
     $cardRight;
     $cardRightBody;
     $cardRightTitle;
-    $cardRightText;
 
     $registBtn;
 
@@ -52,33 +47,21 @@ class Login {
         this.$cardLeft.className = `card col-md-7 p-4 mb-0`
 
         this.$cardLeftBody = document.createElement('div')
-        this.$cardLeftBody.className = `card-body`
+        this.$cardLeftBody.className = `card-body p-0`
 
         this.$cardLeftTitle = document.createElement('h1')
-        this.$cardLeftTitle.innerHTML = `Login`
+        this.$cardLeftTitle.className = `mb-3`
 
-        this.$cardLeftText = document.createElement('p')
-        this.$cardLeftBody.className = `text-medium-emphasis`
-        this.$cardLeftText.innerHTML = `Sign In to your account`
-
-        this.$btnGroupRow = document.createElement('div')
-        this.$btnGroupRow.className = `row`
-
-        this.$btnGroupLeft = document.createElement('div')
-        this.$btnGroupLeft.className = `col-6`
+        this.$cardLeftTitle.innerHTML = `Đăng nhập`
 
         this.$btnLogin = document.createElement('button')
         this.$btnLogin.className = `btn btn-primary px-4`
-        this.$btnLogin.innerHTML = `Login`
+        this.$btnLogin.innerHTML = `Đăng nhập`
         this.$btnLogin.type = `button`
 
         this.$btnGroupRight = document.createElement('div')
         this.$btnGroupRight.className = `col-6 text-end`
 
-        this.$btnForgot = document.createElement('button')
-        this.$btnForgot.className = `btn btn-link px-0`
-        this.$btnForgot.innerHTML = `Forgot password?`
-        this.$btnForgot.type = `button`
 
         this.$cardRight = document.createElement('div')
         this.$cardRight.className = `card col-md-5 text-white bg-primary py-5`
@@ -89,8 +72,7 @@ class Login {
         this.$cardRightTitle = document.createElement('h2')
         this.$cardRightTitle.innerHTML = `Sign up`
 
-        this.$cardRightText = document.createElement('p')
-        this.$cardRightText.innerHTML = `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+
 
         this.$registBtn = document.createElement('button')
         this.$registBtn.className = `btn btn-lg btn-outline-light mt-3`
@@ -137,21 +119,13 @@ class Login {
         this.$card.appendChild(this.$cardLeft)
         this.$cardLeft.appendChild(this.$cardLeftBody)
         this.$cardLeftBody.appendChild(this.$cardLeftTitle)
-        this.$cardLeftBody.appendChild(this.$cardLeftText)
         this.$cardLeftBody.appendChild(this.$phoneNumber.render())
         this.$cardLeftBody.appendChild(this.$password.render())
         this.$cardLeftBody.appendChild(this.$password.render())
-        this.$cardLeftBody.appendChild(this.$btnGroupRow)
-        this.$btnGroupRow.appendChild(this.$btnGroupLeft)
-        this.$btnGroupLeft.appendChild(this.$btnLogin)
-
-        this.$btnGroupRow.appendChild(this.$btnGroupRight)
-        this.$btnGroupRight.appendChild(this.$btnForgot)
-
+        this.$cardLeftBody.appendChild(this.$btnLogin)
         this.$card.appendChild(this.$cardRight)
         this.$cardRight.appendChild(this.$cardRightBody)
         this.$cardRightBody.appendChild(this.$cardRightTitle)
-        this.$cardRightBody.appendChild(this.$cardRightText)
         this.$cardRightBody.appendChild(this.$registBtn)
         return this.$bg
     }
