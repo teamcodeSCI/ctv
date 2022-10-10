@@ -1,6 +1,5 @@
 class Input {
     $container;
-    $input;
     $label;
     $icon;
     $input;
