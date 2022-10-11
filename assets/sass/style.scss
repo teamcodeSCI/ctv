@@ -119,3 +119,11 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none !important;
     margin: 0 !important;
 }
+
+.datatable tbody tr {
+    background-color: transparent;
+}
+
+.datatable tbody tr:nth-of-type(2n+1) {
+    background-color: #eceded;
+}
