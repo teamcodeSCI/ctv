@@ -29,7 +29,6 @@ class Register {
     $source
     $status
 
-    $colBank
     $cardBank
     $cardBodyBank
     $titleBank
@@ -53,6 +52,7 @@ class Register {
         this.$row.className = 'row'
 
         this.$header = document.createElement('h1')
+        this.$header.className = 'text-center mb-3'
         this.$header.innerHTML = 'Đăng ký'
 
         this.$colInfo = document.createElement('div')
@@ -77,6 +77,8 @@ class Register {
         this.$nationalId = new Input({ icon: 'bi bi-card-list', placeholder: 'CMTND/CCCD' })
         this.$nationalIdImg = new Input({ icon: 'bi bi-person-video2', type: 'file', placeholder: 'Ảnh CMTND' })
         this.$email = new Input({ icon: 'bi bi-envelope', placeholder: 'Email' })
+        this.$password = new Input({ icon: 'bi bi-lock', type: 'password', placeholder: 'Mật khẩu' })
+        this.$repeatPassword = new Input({ icon: 'bi bi-lock', type: 'password', placeholder: 'Nhập lại mật khẩu' })
 
         this.$colSource = document.createElement('div')
         this.$colSource.className = 'col-md-6 p-2'
@@ -97,11 +99,8 @@ class Register {
         this.$source = new Select({ icon: 'bi bi-person-lines-fill', data: sourceList, title: 'Nguồn' })
         this.$status = new Select({ icon: 'bi bi-list-task', data: status, title: 'Trạng thái' })
 
-        this.$colBank = document.createElement('div')
-        this.$colBank.className = 'col-md-6 p-2'
-
         this.$cardBank = document.createElement('div')
-        this.$cardBank.className = 'card'
+        this.$cardBank.className = 'card mt-3'
 
         this.$cardBodyBank = document.createElement('div')
         this.$cardBodyBank.className = 'card-body'
@@ -114,17 +113,17 @@ class Register {
         this.$bankNumber = new Input({ icon: 'bi bi-123', placeholder: 'Số thẻ' })
 
         this.$btnGroup = document.createElement('div')
-        this.$btnGroup.className = 'mt-3'
+        this.$btnGroup.className = 'mt-3 d-flex justify-content-center'
 
         this.$btnBack = document.createElement('button')
-        this.$btnBack.className = 'btn btn-link px-0'
+        this.$btnBack.className = 'btn btn-link px-0 me-3'
         this.$btnBack.innerHTML = 'Quay lại'
         this.$btnBack.addEventListener('click', () => {
             this.back()
         })
 
         this.$btnRegister = document.createElement('button')
-        this.$btnRegister.className = 'btn btn-primary px-4 ms-3'
+        this.$btnRegister.className = 'btn btn-primary px-4 '
         this.$btnRegister.innerHTML = 'Đăng ký'
         this.$btnRegister.addEventListener('click', () => {
             this.register()
@@ -145,7 +144,10 @@ class Register {
                 phonenumber2: this.$phonenumber2.getInput().value,
                 nationalId: this.$nationalId.getInput().value,
                 nationalIdImg: this.$nationalIdImg.getInput().value,
-                email: this.$email.getInput().value
+                email: this.$email.getInput().value,
+                password: this.$password.getInput().value,
+                repeatPassword: this.$repeatPassword.getInput().value
+
             },
             source: {
                 company: this.$company.getValue(),
@@ -159,13 +161,17 @@ class Register {
                 bankNumber: this.$bankNumber.getInput().value,
             }
         }
-        if (this.data.info.userId === '' || this.data.info.phonenumber1 === '' || this.data.info.username === '' || this.data.info.nationalId === '') {
+        if (this.data.info.userId === '' || this.data.info.phonenumber1 === '' || this.data.info.username === '' || this.data.info.nationalId === '' || this.data.info.password === '' || this.data.info.repeatPassword === '') {
             alert('Vui lòng nhập đủ thông tin')
             return;
         }
         if (this.data.source.company === 'default' || this.data.source.brand === 'default' || this.data.source.sourceGroup === 'default' || this.data.source.status === 'default' || this.data.source.status === 'default') {
             alert('Vui lòng nhập đủ thông tin')
             return;
+        }
+        if (this.data.password !== this.data.repeatPassword) {
+            alert('Mật khẩu không khớp')
+            return
         }
         console.log(this.data);
         sessionStorage.removeItem('isRegister')
@@ -177,8 +183,6 @@ class Register {
         this.$row.appendChild(this.$header)
         this.$row.appendChild(this.$colInfo)
         this.$row.appendChild(this.$colSource)
-        this.$row.appendChild(this.$colBank)
-
 
         this.$colInfo.appendChild(this.$cardInfo)
         this.$cardInfo.appendChild(this.$cardBodyInfo)
@@ -191,6 +195,9 @@ class Register {
         this.$cardBodyInfo.appendChild(this.$nationalId.render())
         this.$cardBodyInfo.appendChild(this.$nationalIdImg.render())
         this.$cardBodyInfo.appendChild(this.$email.render())
+        this.$cardBodyInfo.appendChild(this.$password.render())
+        this.$cardBodyInfo.appendChild(this.$repeatPassword.render())
+
 
         this.$colSource.appendChild(this.$cardSource)
         this.$cardSource.appendChild(this.$cardBodySource)
@@ -202,10 +209,10 @@ class Register {
         this.$cardBodySource.appendChild(this.$source.render())
         this.$cardBodySource.appendChild(this.$status.render())
 
-        this.$colBank.appendChild(this.$cardBank)
+        this.$colSource.appendChild(this.$cardBank)
         this.$cardBank.appendChild(this.$cardBodyBank)
-        this.$cardBodyBank.appendChild(this.$titleBank)
 
+        this.$cardBodyBank.appendChild(this.$titleBank)
         this.$cardBodyBank.appendChild(this.$bankName.render())
         this.$cardBodyBank.appendChild(this.$bankNumber.render())
 
