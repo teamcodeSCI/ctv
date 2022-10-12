@@ -3,7 +3,7 @@ class Input {
     $label;
     $icon;
     $input;
-    constructor(icon, type, placeholder) {
+    constructor({ icon, type, placeholder, isDisabled }) {
         this.$container = document.createElement('div')
         this.$container.classList.add('input-group', 'mb-3')
 
@@ -15,7 +15,9 @@ class Input {
 
         this.$input = document.createElement('input')
         this.$input.classList.add('form-control')
-        this.$input.type = type
+        this.$input.disabled = isDisabled || false
+
+        this.$input.type = type || 'text'
         this.$input.placeholder = placeholder
     }
     getInput() {

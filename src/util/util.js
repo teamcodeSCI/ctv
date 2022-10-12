@@ -12,6 +12,11 @@ export const loading = (bg, isLoading) => {
     return
 }
 
+export const renderUserId = () => {
+    const random = Math.floor(1000 + Math.random() * 9000)
+    return `CTV-${random}`
+}
+
 export const companyList = [{
     code: 'KN',
     name: 'Kangnam'

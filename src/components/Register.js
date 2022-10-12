@@ -1,7 +1,7 @@
 import { getPage } from "../util/getPage.js";
 import Input from "./Input.js";
 import Select from "./Select.js";
-import { brandList, companyList, sourceList, status } from "../util/util.js"
+import { brandList, companyList, renderUserId, sourceList, status } from "../util/util.js"
 class Register {
     $bg;
     $container;
@@ -37,6 +37,11 @@ class Register {
     $bankName
     $bankNumber
 
+    $btnGroup
+    $btnBack
+    $btnRegister
+
+    data
     constructor() {
         this.$bg = document.createElement('div')
         this.$bg.className = 'bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent'
@@ -63,13 +68,15 @@ class Register {
         this.$titleInfo.className = 'text-medium-emphasis fw-bold mb-3'
         this.$titleInfo.innerHTML = 'Thông tin khách hàng'
 
-        this.$userId = new Input('bi bi-person-video2', 'text', 'Mã cộng tác viên')
-        this.$phonenumber1 = new Input('bi bi-telephone-plus-fill', 'text', 'Số điện thoại 1')
-        this.$username = new Input('fs-5 bi bi-person', 'text', 'Tên cộng tác viên')
-        this.$phonenumber2 = new Input('bi bi-telephone-plus-fill', 'text', 'Số điện thoại 2')
-        this.$nationalId = new Input('bi bi-card-list', 'text', 'CMTND/CCCD')
-        this.$nationalIdImg = new Input('bi bi-person-video2', 'file', 'Ảnh CMTND')
-        this.$email = new Input('bi bi-envelope', 'text', 'Email')
+        this.$userId = new Input({ icon: 'bi bi-person-video2', placeholder: 'Mã cộng tác viên', isDisabled: true })
+        this.$userId.setInput(renderUserId())
+
+        this.$phonenumber1 = new Input({ icon: 'bi bi-telephone-plus-fill', placeholder: 'Số điện thoại 1' })
+        this.$username = new Input({ icon: 'fs-5 bi bi-person', placeholder: 'Tên cộng tác viên' })
+        this.$phonenumber2 = new Input({ icon: 'bi bi-telephone-plus-fill', placeholder: 'Số điện thoại 2' })
+        this.$nationalId = new Input({ icon: 'bi bi-card-list', placeholder: 'CMTND/CCCD' })
+        this.$nationalIdImg = new Input({ icon: 'bi bi-person-video2', type: 'file', placeholder: 'Ảnh CMTND' })
+        this.$email = new Input({ icon: 'bi bi-envelope', placeholder: 'Email' })
 
         this.$colSource = document.createElement('div')
         this.$colSource.className = 'col-md-6 p-2'
@@ -84,11 +91,11 @@ class Register {
         this.$titleSource.className = 'text-medium-emphasis fw-bold mb-3'
         this.$titleSource.innerHTML = 'Tương tác'
 
-        this.$company = new Select('bi bi-building', companyList, 'Công ty')
-        this.$brand = new Select('bi bi-award', brandList, 'Thương hiệu')
-        this.$sourceGroup = new Select('bi bi-people-fill', [], 'Cộng tác viên', 'CTV')
-        this.$source = new Select('bi bi-person-lines-fill', sourceList, 'Nguồn')
-        this.$status = new Select('bi bi-list-task', status, 'Trạng thái')
+        this.$company = new Select({ icon: 'bi bi-building', data: companyList, title: 'Công ty' })
+        this.$brand = new Select({ icon: 'bi bi-award', data: brandList, title: 'Thương hiệu' })
+        this.$sourceGroup = new Select({ icon: 'bi bi-people-fill', title: 'Cộng tác viên', value: 'CTV' })
+        this.$source = new Select({ icon: 'bi bi-person-lines-fill', data: sourceList, title: 'Nguồn' })
+        this.$status = new Select({ icon: 'bi bi-list-task', data: status, title: 'Trạng thái' })
 
         this.$colBank = document.createElement('div')
         this.$colBank.className = 'col-md-6 p-2'
@@ -103,10 +110,64 @@ class Register {
         this.$titleBank.className = 'text-medium-emphasis fw-bold mb-3'
         this.$titleBank.innerHTML = 'Ngân hàng'
 
-        this.$bankName = new Input('bi bi-bank2', 'text', 'Ngân hàng')
-        this.$bankNumber = new Input('bi bi-123', 'text', 'Số thẻ')
+        this.$bankName = new Input({ icon: 'bi bi-bank2', placeholder: 'Ngân hàng' })
+        this.$bankNumber = new Input({ icon: 'bi bi-123', placeholder: 'Số thẻ' })
+
+        this.$btnGroup = document.createElement('div')
+        this.$btnGroup.className = 'mt-3'
+
+        this.$btnBack = document.createElement('button')
+        this.$btnBack.className = 'btn btn-link px-0'
+        this.$btnBack.innerHTML = 'Quay lại'
+        this.$btnBack.addEventListener('click', () => {
+            this.back()
+        })
+
+        this.$btnRegister = document.createElement('button')
+        this.$btnRegister.className = 'btn btn-primary px-4 ms-3'
+        this.$btnRegister.innerHTML = 'Đăng ký'
+        this.$btnRegister.addEventListener('click', () => {
+            this.register()
+        })
+
     }
+
     back() {
+        sessionStorage.removeItem('isRegister')
+        getPage()
+    }
+    register() {
+        this.data = {
+            info: {
+                userId: this.$userId.getInput().value,
+                phonenumber1: this.$phonenumber1.getInput().value,
+                username: this.$username.getInput().value,
+                phonenumber2: this.$phonenumber2.getInput().value,
+                nationalId: this.$nationalId.getInput().value,
+                nationalIdImg: this.$nationalIdImg.getInput().value,
+                email: this.$email.getInput().value
+            },
+            source: {
+                company: this.$company.getValue(),
+                brand: this.$brand.getValue(),
+                sourceGroup: this.$sourceGroup.getValue(),
+                source: this.$source.getValue(),
+                status: this.$status.getValue(),
+            },
+            bank: {
+                bankName: this.$bankName.getInput().value,
+                bankNumber: this.$bankNumber.getInput().value,
+            }
+        }
+        if (this.data.info.userId === '' || this.data.info.phonenumber1 === '' || this.data.info.username === '' || this.data.info.nationalId === '') {
+            alert('Vui lòng nhập đủ thông tin')
+            return;
+        }
+        if (this.data.source.company === 'default' || this.data.source.brand === 'default' || this.data.source.sourceGroup === 'default' || this.data.source.status === 'default' || this.data.source.status === 'default') {
+            alert('Vui lòng nhập đủ thông tin')
+            return;
+        }
+        console.log(this.data);
         sessionStorage.removeItem('isRegister')
         getPage()
     }
@@ -147,6 +208,12 @@ class Register {
 
         this.$cardBodyBank.appendChild(this.$bankName.render())
         this.$cardBodyBank.appendChild(this.$bankNumber.render())
+
+        this.$container.appendChild(this.$btnGroup)
+        this.$btnGroup.appendChild(this.$btnBack)
+        this.$btnGroup.appendChild(this.$btnRegister)
+
+
         return this.$bg
     }
 }

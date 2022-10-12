@@ -63,7 +63,6 @@ class Login {
         this.$btnGroupRight = document.createElement('div')
         this.$btnGroupRight.className = `col-6 text-end`
 
-
         this.$cardRight = document.createElement('div')
         this.$cardRight.className = `card col-md-5 text-white bg-primary py-5`
 
@@ -73,8 +72,6 @@ class Login {
         this.$cardRightTitle = document.createElement('h2')
         this.$cardRightTitle.innerHTML = `Sign up`
 
-
-
         this.$registBtn = document.createElement('button')
         this.$registBtn.className = `btn btn-lg btn-outline-light mt-3`
         this.$registBtn.type = 'button'
@@ -83,8 +80,8 @@ class Login {
             this.register()
         })
 
-        this.$phoneNumber = new Input('bi bi-phone', 'text', 'Số điện thoại')
-        this.$password = new Input('bi bi-lock', 'password', 'Mật khẩu')
+        this.$phoneNumber = new Input({ icon: 'bi bi-phone', placeholder: 'Số điện thoại' })
+        this.$password = new Input({ icon: 'bi bi-lock', type: 'password', placeholder: 'Mật khẩu' })
 
         this.$btnLogin = document.createElement('button')
         this.$btnLogin.classList.add('btn', 'btn-primary')

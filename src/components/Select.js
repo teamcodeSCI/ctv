@@ -9,9 +9,9 @@ class Select {
     data
     title
     value
-    constructor(icon, data, title, value) {
+    constructor({ icon, data, title, value }) {
         this.title = title
-        this.data = data
+        this.data = data || []
         this.value = value || 'default'
         this.$container = document.createElement('div')
         this.$container.classList.add('input-group', 'mb-3')
@@ -26,16 +26,22 @@ class Select {
         this.$select.className = 'form-select'
     }
     option() {
-        this.$option = new Option(this.value, this.title, true, true)
+        this.$option = new Option({ code: this.value, name: this.title, isSelected: true, isDisabled: true })
         this.$select.appendChild(this.$option.render())
         for (let item of this.data) {
-            this.$option = new Option(item.code, item.name, false, false)
+            this.$option = new Option({ code: item.code, name: item.name })
             this.$select.appendChild(this.$option.render())
         }
         return this.$select
     }
+    success() {
+        this.$select.style.border = '1px solid green'
+    }
+    fail() {
+        this.$select.style.border = '1px solid red'
+
+    }
     getValue() {
-        console.log(this.$select.value);
         return this.$select.value
     }
     render() {

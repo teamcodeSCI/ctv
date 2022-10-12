@@ -1,8 +1,8 @@
 class Option {
-    constructor(code, name, isSelected, isDisabled) {
+    constructor({ code, name, isSelected, isDisabled }) {
         this.$option = document.createElement('option')
-        this.$option.selected = isSelected
-        this.$option.disabled = isDisabled
+        this.$option.selected = isSelected || false
+        this.$option.disabled = isDisabled || false
         this.$option.value = code
         this.$option.innerHTML = name
     }
