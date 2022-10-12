@@ -1,5 +1,6 @@
 import { getComponent } from "../util/getComponent.js"
 import { menu } from "../util/routes.js"
+import Logout from "./Logout.js"
 import SidebarItem from "./SidebarItem.js"
 
 class Sidebar {
@@ -11,6 +12,8 @@ class Sidebar {
     $menu
     $menuItem
     $component
+    $lineBot
+    $logout
     constructor(component) {
         this.$component = component
         this.$container = document.createElement('div')
@@ -33,12 +36,16 @@ class Sidebar {
 
         this.$menu = document.createElement('ul')
         this.$menu.className = 'nav nav-pills flex-column mb-auto gap-2'
+
+        this.$lineBot = document.createElement('hr')
+        this.$logout = new Logout()
     }
     renderMenu() {
         for (let item of menu) {
             this.$menuItem = new SidebarItem(item.icon, item.text)
             this.$menuItem.render().addEventListener('click', () => {
                 sessionStorage.setItem('link', item.link)
+                this.setActive()
                 getComponent(this.$component)
             })
             this.$menu.appendChild(this.$menuItem.render())
@@ -52,7 +59,8 @@ class Sidebar {
         this.$container.appendChild(this.$line)
         this.$container.appendChild(this.$menu)
         this.renderMenu()
-
+        this.$container.appendChild(this.$lineBot)
+        this.$container.appendChild(this.$logout.render())
         return this.$container
     }
 }

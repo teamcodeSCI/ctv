@@ -95,14 +95,6 @@ html:not([dir=rtl]) .nav {
     height: 100vh;
     min-width: 280px;
     background-color: #232938;
-}
-
-.sidebar hr {
-    border-color: rgba(255, 255, 255, 0.6);
-    margin: 1.25rem 0
-}
-
-.sidebarItem {
     .text-cus {
         color: rgba(255, 255, 255, 0.6);
     }
@@ -110,6 +102,11 @@ html:not([dir=rtl]) .nav {
     .text-cus:focus {
         color: white;
     }
+}
+
+.sidebar hr {
+    border-color: rgba(255, 255, 255, 0.6);
+    margin: 1.25rem 0
 }
 
 input[type=number]::-webkit-inner-spin-button,
