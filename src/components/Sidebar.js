@@ -41,6 +41,7 @@ class Sidebar {
         this.$logout = new Logout()
     }
     renderMenu() {
+        this.$menu.innerHTML = ''
         for (let item of menu) {
             this.$menuItem = new SidebarItem(item.icon, item.text)
             this.$menuItem.render().addEventListener('click', () => {

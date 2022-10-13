@@ -101,6 +101,8 @@ class Login {
             return
         }
         localStorage.setItem('isLogin', dataLogin.isLogin)
+        this.$phoneNumber.success()
+        this.$password.success()
         getPage()
         return
     }
