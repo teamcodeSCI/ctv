@@ -20,6 +20,7 @@ class Logout {
     }
     logout() {
         localStorage.removeItem('isLogin')
+        sessionStorage.removeItem('link')
         getPage()
     }
     render() {
