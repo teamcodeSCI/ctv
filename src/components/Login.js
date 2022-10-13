@@ -1,5 +1,4 @@
 import { login } from "../apis/user.js";
-import { getComponent } from "../util/getComponent.js";
 import { getPage } from "../util/getPage.js";
 import { loading } from "../util/util.js";
 import Input from "./Input.js";

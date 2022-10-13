@@ -1,5 +1,5 @@
 import { getComponent } from "../util/getComponent.js"
-import { menu } from "../util/routes.js"
+import { info, menu } from "../util/routes.js"
 import Logout from "./Logout.js"
 import SidebarItem from "./SidebarItem.js"
 
@@ -22,6 +22,10 @@ class Sidebar {
         this.$user = document.createElement('a')
         this.$user.className = 'd-flex align-items-center text-white text-decoration-none'
         this.$user.href = '#'
+        this.$user.addEventListener('click', () => {
+            sessionStorage.setItem('link', info[0].link)
+            getComponent(this.$component, info)
+        })
 
         this.$userImg = document.createElement('img')
         this.$userImg.className = 'rounded-circle me-2'
@@ -36,6 +40,7 @@ class Sidebar {
 
         this.$menu = document.createElement('ul')
         this.$menu.className = 'nav nav-pills flex-column mb-auto gap-2'
+        this.renderMenu()
 
         this.$lineBot = document.createElement('hr')
         this.$logout = new Logout()
@@ -46,7 +51,7 @@ class Sidebar {
             this.$menuItem = new SidebarItem(item.icon, item.text)
             this.$menuItem.render().addEventListener('click', () => {
                 sessionStorage.setItem('link', item.link)
-                getComponent(this.$component)
+                getComponent(this.$component, menu)
             })
             this.$menu.appendChild(this.$menuItem.render())
         }
@@ -58,7 +63,6 @@ class Sidebar {
         this.$user.appendChild(this.$userText)
         this.$container.appendChild(this.$line)
         this.$container.appendChild(this.$menu)
-        this.renderMenu()
         this.$container.appendChild(this.$lineBot)
         this.$container.appendChild(this.$logout.render())
         return this.$container

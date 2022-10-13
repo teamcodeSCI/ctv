@@ -28,3 +28,7 @@ export const menu = [{
     link: 'communicate',
     component: communicate
 }]
+export const info = [{
+    link: 'info',
+    component: communicate
+}]

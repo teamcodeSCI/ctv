@@ -1,4 +1,5 @@
 import { getComponent } from "../util/getComponent.js";
+import { menu } from "../util/routes.js";
 import Sidebar from "./Sidebar.js";
 
 class Home {
@@ -14,7 +15,7 @@ class Home {
         this.$sidebar = new Sidebar(this.$content)
     }
     render() {
-        getComponent(this.$content)
+        getComponent(this.$content, menu)
         this.$container.appendChild(this.$sidebar.render())
         this.$container.appendChild(this.$content)
         return this.$container
