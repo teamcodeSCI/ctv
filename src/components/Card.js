@@ -28,7 +28,7 @@ class Card {
 
         this.$progressBar = document.createElement('div')
         this.$progressBar.className = 'progress-bar bg-primary'
-        this.$progressBar.style.width = `${percent}%`
+        this.$progressBar.style.width = `${percent}%` || `25%`
     }
     render() {
         this.$container.appendChild(this.$card)

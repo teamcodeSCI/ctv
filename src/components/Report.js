@@ -20,11 +20,11 @@ class Report {
         this.$row = document.createElement('div')
         this.$row.className = 'row'
 
-        this.$turnover = new Card({ value: '20 Triệu', title: 'Doanh thu', percent: 50 })
-        this.$commission = new Card({ value: '20 Triệu', title: 'Hoa hồng', percent: 50 })
-        this.$debts = new Card({ value: '20 Triệu', title: 'Công nợ', percent: 50 })
-        this.$customer = new Card({ value: '2000', title: 'Khách hàng', percent: 50 })
-        this.$service = new Card({ value: '20', title: 'Dịch vụ', percent: 50 })
+        this.$turnover = new Card({ value: '20 Triệu', title: 'Doanh thu', percent: 40 })
+        this.$commission = new Card({ value: '20 Triệu', title: 'Hoa hồng', percent: 40 })
+        this.$debts = new Card({ value: '20 Triệu', title: 'Công nợ', percent: 40 })
+        this.$customer = new Card({ value: '2000', title: 'Khách hàng', percent: 40 })
+        this.$service = new Card({ value: '20', title: 'Dịch vụ', percent: 40 })
         this.$cash = new Card({ value: '20 Triệu', title: 'Dòng tiền', percent: 50 })
 
     }
