@@ -1,4 +1,4 @@
-const URL = '/src/apis/user.json'
+const URL = 'src/apis/user.json'
 const getAllUser = async() => {
     try {
         const response = await fetch(URL)

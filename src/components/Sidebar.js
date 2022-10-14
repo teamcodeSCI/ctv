@@ -14,6 +14,7 @@ class Sidebar {
     $component
     $lineBot
     $logout
+    sidebarGroup = []
     constructor(component) {
         this.$component = component
         this.$container = document.createElement('div')
@@ -44,15 +45,29 @@ class Sidebar {
 
         this.$lineBot = document.createElement('hr')
         this.$logout = new Logout()
+
+    }
+    activeMenu = (nameMenu) => {
+        for (let item of this.sidebarGroup) {
+            if (nameMenu.text === item.getText().innerHTML) {
+                item.getItem().classList.add('active')
+            } else {
+                item.getItem().classList.remove('active')
+            }
+        }
+
     }
     renderMenu() {
-        this.$menu.innerHTML = ''
         for (let item of menu) {
-            this.$menuItem = new SidebarItem(item.icon, item.text)
-            this.$menuItem.render().addEventListener('click', () => {
-                sessionStorage.setItem('link', item.link)
-                getComponent(this.$component, menu)
+            this.$menuItem = new SidebarItem({
+                icon: item.icon,
+                text: item.text,
+                link: item.link,
+                data: menu,
+                component: this.$component,
+                activeMenu: this.activeMenu
             })
+            this.sidebarGroup.push(this.$menuItem)
             this.$menu.appendChild(this.$menuItem.render())
         }
         return this.$menu

@@ -6,7 +6,7 @@ class Search {
     $icon
     constructor() {
         this.$container = document.createElement('div')
-        this.$container.classList.add('input-group')
+        this.$container.classList.add('input-group', 'w-auto')
 
         this.$form = document.createElement('div')
         this.$form.classList.add('form-outline')

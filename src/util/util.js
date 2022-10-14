@@ -78,3 +78,12 @@ export const status = [{
     code: 'COMPLETED',
     name: 'Đã xử lý'
 }]
+export const statusList = [{
+    name: 'Khách hàng cũ'
+}, {
+    name: 'Khách hàng đã hẹn lịch'
+}, {
+    name: 'Khách hàng thành công'
+}, {
+    name: 'Khách hàng đến cửa'
+}]
