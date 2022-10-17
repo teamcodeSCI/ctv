@@ -16,7 +16,6 @@ class FilterItem {
         this.setStatus(this.$item.innerHTML)
     }
     render() {
-        console.log(this.setStatus);
         this.$container.appendChild(this.$item)
         return this.$container
     }

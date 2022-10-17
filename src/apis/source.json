@@ -1,0 +1,21 @@
+[{
+        "code": "CTV01",
+        "name": "CTV_Bên ngoài (Sale&MKT)"
+    },
+    {
+        "code": "CTV02",
+        "name": "CTV_Bên ngoài (Chi nhánh)"
+    },
+    {
+        "code": "CTV04",
+        "name": "CTV_Nội bộ_Bác sĩ"
+    },
+    {
+        "code": "CTV06",
+        "name": "CTV_Nội bộ_CBNV"
+    },
+    {
+        "code": "CTV07",
+        "name": "CTV_Khách hàng hợp tác"
+    }
+]
