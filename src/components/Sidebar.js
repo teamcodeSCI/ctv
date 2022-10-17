@@ -49,13 +49,12 @@ class Sidebar {
     }
     activeMenu = (nameMenu) => {
         for (let item of this.sidebarGroup) {
-            if (nameMenu.text === item.getText().innerHTML) {
-                item.getItem().classList.add('active')
+            if (nameMenu.text === item.getItem().text.innerHTML) {
+                item.getItem().item.classList.add('active')
             } else {
-                item.getItem().classList.remove('active')
+                item.getItem().item.classList.remove('active')
             }
         }
-
     }
     renderMenu() {
         for (let item of menu) {

@@ -1,6 +1,8 @@
 import { login } from "../apis/user.js";
 import { getPage } from "../util/getPage.js";
+import { menu } from "../util/routes.js";
 import { loading } from "../util/util.js";
+import Home from "./Home.js";
 import Input from "./Input.js";
 class Login {
     $bg;
@@ -27,7 +29,9 @@ class Login {
     $phoneNumber
     $password;
 
+    $layout
     constructor() {
+        this.$layout = new Home()
         this.$bg = document.createElement('div')
         this.$bg.className = `bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent`
 
@@ -100,14 +104,18 @@ class Login {
             return
         }
         localStorage.setItem('isLogin', dataLogin.isLogin)
+        sessionStorage.setItem('link', 'report')
         this.$phoneNumber.success()
         this.$password.success()
         getPage()
+        getComponent(this.$layout.getLayout(), menu)
+
         return
     }
     register() {
         sessionStorage.setItem('isRegister', true)
         getPage()
+
         return
     }
     render() {

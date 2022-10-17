@@ -14,6 +14,9 @@ class Home {
 
         this.$sidebar = new Sidebar(this.$content)
     }
+    getLayout() {
+        return this.$content
+    }
     render() {
         getComponent(this.$content, menu)
         this.$container.appendChild(this.$sidebar.render())

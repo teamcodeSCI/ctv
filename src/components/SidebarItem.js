@@ -17,7 +17,7 @@ class SidebarItem {
         this.$container.className = 'sidebarItem'
 
         this.$item = document.createElement('a')
-        this.$item.className = 'nav-link text-cus d-flex align-items-center gap-2'
+        this.$item.className = `nav-link text-cus d-flex align-items-center gap-2 ${this.link===sessionStorage.getItem('link')?'active':''}`
         this.$item.href = '#'
         this.$item.addEventListener('click', () => {
             this.handleClick()
@@ -30,11 +30,11 @@ class SidebarItem {
         this.$text.innerHTML = text
 
     }
-    getText() {
-        return this.$text
-    }
     getItem() {
-        return this.$item
+        return {
+            text: this.$text,
+            item: this.$item
+        }
     }
     handleClick = () => {
         this.activeMenu({ text: this.$text.innerHTML })
