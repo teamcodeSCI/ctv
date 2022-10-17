@@ -1,4 +1,3 @@
-import { statusList } from "../util/util.js"
 import FilterItem from "./FilterItem.js"
 
 class Filter {
@@ -6,7 +5,10 @@ class Filter {
     $filterButon
     $dropdown
     $dropdownItem
-    constructor() {
+    statusList
+
+    constructor(statusList) {
+        this.statusList = statusList || []
         this.$container = document.createElement('div')
         this.$container.className = 'dropdown'
 
@@ -21,10 +23,13 @@ class Filter {
             this.$dropdown.classList.toggle('d-block')
         })
     }
+    setStatus = (status) => {
+        this.$filterButon.innerHTML = status
+    }
     renderFilterItem = () => {
         this.$dropdown.innerHTML = ''
-        for (let item of statusList) {
-            this.$dropdownItem = new FilterItem({ title: item.name })
+        for (let item of this.statusList) {
+            this.$dropdownItem = new FilterItem({ title: item.name, setStatus: this.setStatus })
             this.$dropdown.appendChild(this.$dropdownItem.render())
         }
         return this.$dropdown

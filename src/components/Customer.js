@@ -1,5 +1,6 @@
 import Filter from "./Filter.js";
 import Search from "./Search.js";
+import { statusList } from "../util/util.js"
 
 
 class Customer {
@@ -8,7 +9,6 @@ class Customer {
     $filterSearch
     $filter
     $search;
-
     constructor() {
         this.$container = document.createElement('div')
         this.$container.className = 'container'
@@ -20,7 +20,7 @@ class Customer {
         this.$filterSearch = document.createElement('div')
         this.$filterSearch.className = 'd-flex justify-content-end gap-3'
 
-        this.$filter = new Filter()
+        this.$filter = new Filter(statusList)
         this.$search = new Search()
     }
     render() {

@@ -79,6 +79,8 @@ export const status = [{
     name: 'Đã xử lý'
 }]
 export const statusList = [{
+    name: 'Tất cả'
+}, {
     name: 'Khách hàng cũ'
 }, {
     name: 'Khách hàng đã hẹn lịch'

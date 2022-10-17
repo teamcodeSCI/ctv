@@ -1,13 +1,22 @@
 class FilterItem {
     $container;
     $item;
-    constructor({ title }) {
+    setStatus
+    constructor({ title, setStatus }) {
+        this.setStatus = setStatus
         this.$container = document.createElement('li')
+        this.$container.addEventListener('click', () => {
+            this.setFilter()
+        })
         this.$item = document.createElement('button')
         this.$item.className = 'dropdown-item'
         this.$item.innerHTML = title
     }
+    setFilter = () => {
+        this.setStatus(this.$item.innerHTML)
+    }
     render() {
+        console.log(this.setStatus);
         this.$container.appendChild(this.$item)
         return this.$container
     }
