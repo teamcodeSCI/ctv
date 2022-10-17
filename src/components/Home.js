@@ -11,7 +11,6 @@ class Home {
         this.$container.className = 'd-flex'
         this.$content = document.createElement('div')
         this.$content.className = 'col-10 flex-fill px-3 bg-light'
-
         this.$sidebar = new Sidebar(this.$content)
     }
     getLayout() {

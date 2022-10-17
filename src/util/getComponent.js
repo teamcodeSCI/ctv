@@ -1,5 +1,3 @@
-import { menu } from "./routes.js";
-
 let currentComponent = null;
 export const setComponent = (container, component) => {
 
@@ -16,5 +14,4 @@ export const getComponent = (container, menu) => {
             return;
         }
     }
-    setComponent(container, menu[0].component)
 }

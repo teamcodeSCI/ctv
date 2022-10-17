@@ -9,7 +9,7 @@ class Pagination {
     index = 1;
     dataLength = 0;
     constructor(data) {
-        this.dataLength = data;
+        this.dataLength = data.length;
         this.$container = document.createElement('ul')
         this.$container.id = 'page2'
         this.$container.classList.add('pagination', 'justify-content-center')
@@ -60,7 +60,10 @@ class Pagination {
         console.log(this.index);
     }
 
-    loadPage() {
+    render() {
+        this.$container.innerHTML = ''
+        this.$container.appendChild(this.$preBtn)
+        this.$preBtn.appendChild(this.$preLink)
         const numTemp = (number) => {
             this.$numBtn = document.createElement('li')
             this.$numBtn.classList.add('page-item')
@@ -91,16 +94,11 @@ class Pagination {
         for (let i = 1; i <= this.dataLength; i++) {
             numTemp(i)
         }
-    }
-    render() {
-        this.$container.appendChild(this.$preBtn)
-        this.$preBtn.appendChild(this.$preLink)
-        console.log(this.index)
-        this.loadPage()
-
         this.$container.appendChild(this.$nextBtn)
         this.$nextBtn.appendChild(this.$nextLink)
+        console.log(this.index)
         return this.$container
     }
+
 }
 export default Pagination

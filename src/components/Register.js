@@ -113,22 +113,22 @@ class Register {
         this.$bankNumber = new Input({ icon: 'bi bi-123', placeholder: 'Số thẻ' })
 
         this.$btnGroup = document.createElement('div')
-        this.$btnGroup.className = 'mt-3 d-flex justify-content-center'
+        this.$btnGroup.className = 'mt-3 d-flex justify-content-between'
 
         this.$btnBack = document.createElement('button')
-        this.$btnBack.className = 'btn btn-link px-0 me-3'
+        this.$btnBack.className = 'btn btn-link px-0 '
         this.$btnBack.innerHTML = 'Quay lại'
         this.$btnBack.addEventListener('click', () => {
             this.back()
         })
 
         this.$btnRegister = document.createElement('button')
-        this.$btnRegister.className = 'btn btn-primary px-4 '
+        this.$btnRegister.className = 'btn btn-primary px-4 me-5 '
         this.$btnRegister.innerHTML = 'Đăng ký'
         this.$btnRegister.addEventListener('click', () => {
             this.register()
         })
-
+        this.$none = document.createElement('div')
     }
 
     back() {
@@ -219,6 +219,8 @@ class Register {
         this.$container.appendChild(this.$btnGroup)
         this.$btnGroup.appendChild(this.$btnBack)
         this.$btnGroup.appendChild(this.$btnRegister)
+        this.$btnGroup.appendChild(this.$none)
+
 
 
         return this.$bg

@@ -83,9 +83,38 @@ export const statusList = [{
 }, {
     name: 'Khách hàng cũ'
 }, {
-    name: 'Khách hàng đã hẹn lịch'
+    name: 'Đã hẹn lịch'
 }, {
-    name: 'Khách hàng thành công'
+    name: 'Thành công'
 }, {
-    name: 'Khách hàng đến cửa'
+    name: 'Đến cửa'
+}]
+export const customerList = [{
+    name: 'Nguyễn Văn A',
+    phonenumber: '012134511',
+    status: 'Khách hàng cũ'
+}, {
+    name: 'Nguyễn Văn B',
+    phonenumber: '012134531',
+    status: 'Đã hẹn lịch'
+}, {
+    name: 'Nguyễn Văn C',
+    phonenumber: '022134511',
+    status: 'Thành công'
+}, {
+    name: 'Nguyễn Văn D',
+    phonenumber: '012134511',
+    status: 'Khách hàng cũ'
+}, {
+    name: 'Nguyễn Văn E',
+    phonenumber: '012134511',
+    status: 'Khách hàng cũ'
+}, {
+    name: 'Nguyễn Văn F',
+    phonenumber: '012134511',
+    status: 'Khách hàng cũ'
+}, {
+    name: 'Nguyễn Văn G',
+    phonenumber: '012134511',
+    status: 'Khách hàng cũ'
 }]

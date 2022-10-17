@@ -13,7 +13,7 @@ class Filter {
         this.$container.className = 'dropdown'
 
         this.$dropdown = document.createElement('ul')
-        this.$dropdown.className = 'dropdown-menu mt-2'
+        this.$dropdown.className = 'dropdown-menu end-0 mt-2'
         this.renderFilterItem();
 
         this.$filterButon = document.createElement('button')
@@ -22,6 +22,7 @@ class Filter {
         this.$filterButon.addEventListener('click', () => {
             this.$dropdown.classList.toggle('d-block')
         })
+
     }
     setStatus = (status) => {
         this.$filterButon.innerHTML = status
