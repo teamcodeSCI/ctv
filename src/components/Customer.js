@@ -41,7 +41,7 @@ class Customer {
         this.$filterSearch = document.createElement('div')
         this.$filterSearch.className = 'd-flex justify-content-end gap-3 mb-4'
 
-        this.$filter = new Filter(statusList)
+        this.$filter = new Filter({ statusList: statusList })
         this.$search = new Search()
         this.$pagination = new Pagination(customerList)
 

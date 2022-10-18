@@ -7,7 +7,7 @@ class Filter {
     $dropdownItem
     statusList
 
-    constructor(statusList) {
+    constructor({ statusList }) {
         this.statusList = statusList || []
         this.$container = document.createElement('div')
         this.$container.className = 'dropdown'
