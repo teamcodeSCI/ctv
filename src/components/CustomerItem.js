@@ -5,7 +5,7 @@ class CustomerItem {
     $status
     $number
 
-    constructor({ number, booking, creator, name, phonenumber, service, createAt, appointmentDate, arrivalDate, status }) {
+    constructor({ number, booking, name, phonenumber, service, createAt, appointmentDate, arrivalDate, status }) {
         this.$container = document.createElement('tr')
 
         this.$number = document.createElement('th')
@@ -14,8 +14,7 @@ class CustomerItem {
         this.$booking = document.createElement('td')
         this.$booking.innerHTML = booking || ''
 
-        this.$creator = document.createElement('td')
-        this.$creator.innerHTML = creator || ''
+
 
         this.$name = document.createElement('td')
         this.$name.innerHTML = name || ''
@@ -41,7 +40,7 @@ class CustomerItem {
     render() {
         this.$container.appendChild(this.$number)
         this.$container.appendChild(this.$booking)
-        this.$container.appendChild(this.$creator)
+
         this.$container.appendChild(this.$name)
         this.$container.appendChild(this.$phonenumber)
         this.$container.appendChild(this.$service)

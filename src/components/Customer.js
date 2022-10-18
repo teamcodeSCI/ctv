@@ -64,8 +64,7 @@ class Customer {
         this.$booking = document.createElement('th')
         this.$booking.innerHTML = 'Mã booking'
 
-        this.$creator = document.createElement('th')
-        this.$creator.innerHTML = 'Người tạo'
+
 
         this.$name = document.createElement('th')
         this.$name.innerHTML = 'Tên khách hàng'
@@ -94,7 +93,7 @@ class Customer {
             this.$item = new CustomerItem({
                 number: idx + 1,
                 booking: e.booking,
-                creator: e.creator,
+
                 name: e.name,
                 phonenumber: e.phonenumber,
                 service: e.service,
@@ -127,7 +126,7 @@ class Customer {
 
         this.$headerTr.appendChild(this.$number)
         this.$headerTr.appendChild(this.$booking)
-        this.$headerTr.appendChild(this.$creator)
+
         this.$headerTr.appendChild(this.$name)
         this.$headerTr.appendChild(this.$phonenumber)
         this.$headerTr.appendChild(this.$service)
