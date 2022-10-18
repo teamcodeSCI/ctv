@@ -11,14 +11,21 @@ class Customer {
     $filterSearch
     $filter
     $search;
+    $tableRes;
     $table;
     $thead
     $headerTr
     $tbody
 
     $number
+    $booking
+    $creator
     $name
     $phonenumber
+    $service
+    $createAt
+    $appointmentDate
+    $arrivalDate
     $status
 
     $item
@@ -32,11 +39,14 @@ class Customer {
         this.$header.innerHTML = 'Khách hàng'
 
         this.$filterSearch = document.createElement('div')
-        this.$filterSearch.className = 'd-flex justify-content-end gap-3 mb-5'
+        this.$filterSearch.className = 'd-flex justify-content-end gap-3 mb-4'
 
         this.$filter = new Filter(statusList)
         this.$search = new Search()
         this.$pagination = new Pagination(customerList)
+
+        this.$tableRes = document.createElement('div')
+        this.$tableRes.className = 'table-responsive'
 
         this.$table = document.createElement('table')
         this.$table.className = 'table border table-striped'
@@ -51,11 +61,29 @@ class Customer {
         this.$number = document.createElement('th')
         this.$number.innerHTML = 'STT'
 
+        this.$booking = document.createElement('th')
+        this.$booking.innerHTML = 'Mã booking'
+
+        this.$creator = document.createElement('th')
+        this.$creator.innerHTML = 'Người tạo'
+
         this.$name = document.createElement('th')
         this.$name.innerHTML = 'Tên khách hàng'
 
         this.$phonenumber = document.createElement('th')
         this.$phonenumber.innerHTML = 'Số điện thoại'
+
+        this.$service = document.createElement('th')
+        this.$service.innerHTML = 'Dịch vụ'
+
+        this.$createAt = document.createElement('th')
+        this.$createAt.innerHTML = 'Ngày tạo'
+
+        this.$appointmentDate = document.createElement('th')
+        this.$appointmentDate.innerHTML = 'Ngày hẹn lịch'
+
+        this.$arrivalDate = document.createElement('th')
+        this.$arrivalDate.innerHTML = 'Ngày đến cửa'
 
         this.$status = document.createElement('th')
         this.$status.innerHTML = 'Trạng thái'
@@ -63,7 +91,18 @@ class Customer {
     renderItem() {
         this.$tbody.innerHTML = ''
         customerList.map((e, idx) => {
-            this.$item = new CustomerItem({ number: idx + 1, name: e.name, phonenumber: e.phonenumber, status: e.status })
+            this.$item = new CustomerItem({
+                number: idx + 1,
+                booking: e.booking,
+                creator: e.creator,
+                name: e.name,
+                phonenumber: e.phonenumber,
+                service: e.service,
+                createAt: e.createAt,
+                appointmentDate: e.appointmentDate,
+                arrivalDate: e.arrivalDate,
+                status: e.status
+            })
             this.$tbody.appendChild(this.$item.render())
         })
         return this.$tbody
@@ -77,7 +116,9 @@ class Customer {
         this.$filterSearch.appendChild(this.$filter.render())
         this.$filterSearch.appendChild(this.$search.render())
 
-        this.$container.appendChild(this.$table)
+        this.$container.appendChild(this.$tableRes)
+
+        this.$tableRes.appendChild(this.$table)
 
         this.$table.appendChild(this.$thead)
         this.$table.appendChild(this.$tbody)
@@ -85,8 +126,14 @@ class Customer {
         this.$thead.appendChild(this.$headerTr)
 
         this.$headerTr.appendChild(this.$number)
+        this.$headerTr.appendChild(this.$booking)
+        this.$headerTr.appendChild(this.$creator)
         this.$headerTr.appendChild(this.$name)
         this.$headerTr.appendChild(this.$phonenumber)
+        this.$headerTr.appendChild(this.$service)
+        this.$headerTr.appendChild(this.$createAt)
+        this.$headerTr.appendChild(this.$appointmentDate)
+        this.$headerTr.appendChild(this.$arrivalDate)
         this.$headerTr.appendChild(this.$status)
 
         this.$container.appendChild(this.$pagination.render())

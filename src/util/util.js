@@ -81,40 +81,90 @@ export const status = [{
 export const statusList = [{
     name: 'Tất cả'
 }, {
-    name: 'Khách hàng cũ'
-}, {
-    name: 'Đã hẹn lịch'
-}, {
     name: 'Thành công'
 }, {
-    name: 'Đến cửa'
+    name: 'Outsold'
+}, {
+    name: 'Đang xử lý'
+}, {
+    name: 'Xác nhận'
+}, {
+    name: 'Chưa xác nhận'
+}, {
+    name: 'Khách không đến'
+}, {
+    name: 'Đặt cọc'
+}, {
+    name: 'Hủy'
 }]
 export const customerList = [{
+    booking: 'booking1',
+    creator: 'Người tạo 1',
+    service: 'dịch vụ 1',
+    createAt: '20-09-2022',
+    appointmentDate: '21-09-2022',
+    arrivalDate: '22-09-2022',
     name: 'Nguyễn Văn A',
     phonenumber: '012134511',
-    status: 'Khách hàng cũ'
-}, {
-    name: 'Nguyễn Văn B',
-    phonenumber: '012134531',
-    status: 'Đã hẹn lịch'
-}, {
-    name: 'Nguyễn Văn C',
-    phonenumber: '022134511',
     status: 'Thành công'
 }, {
+    booking: 'booking2',
+    creator: 'Người tạo 1',
+    service: 'dịch vụ 1',
+    createAt: '20-09-2022',
+    appointmentDate: '21-09-2022',
+    arrivalDate: '22-09-2022',
+    name: 'Nguyễn Văn AB',
+    phonenumber: '012134511',
+    status: 'Đặt cọc'
+}, {
+    booking: 'booking3',
+    creator: 'Người tạo 1',
+    service: 'dịch vụ 1',
+    createAt: '20-09-2022',
+    appointmentDate: '21-09-2022',
+    arrivalDate: '22-09-2022',
+    name: 'Nguyễn Văn ABC',
+    phonenumber: '012134511',
+    status: 'Thành công'
+}, {
+    booking: 'booking4',
+    creator: 'Người tạo 1',
+    service: 'dịch vụ 1',
+    createAt: '20-09-2022',
+    appointmentDate: '21-09-2022',
+    arrivalDate: '22-09-2022',
+    name: 'Nguyễn Văn A',
+    phonenumber: '012134511',
+    status: 'Đặt cọc'
+}, {
+    booking: 'booking5',
+    creator: 'Người tạo 1',
+    service: 'dịch vụ 1',
+    createAt: '20-09-2022',
+    appointmentDate: '21-09-2022',
+    arrivalDate: '22-09-2022',
     name: 'Nguyễn Văn D',
     phonenumber: '012134511',
-    status: 'Khách hàng cũ'
+    status: 'Thành công'
 }, {
-    name: 'Nguyễn Văn E',
+    booking: 'booking6',
+    creator: 'Người tạo 1',
+    service: 'dịch vụ 1',
+    createAt: '20-09-2022',
+    appointmentDate: '21-09-2022',
+    arrivalDate: '22-09-2022',
+    name: 'Nguyễn Văn X',
     phonenumber: '012134511',
-    status: 'Khách hàng cũ'
+    status: 'Đang xử lý'
 }, {
-    name: 'Nguyễn Văn F',
+    booking: 'booking7',
+    creator: 'Người tạo 1',
+    service: 'dịch vụ 1',
+    createAt: '20-09-2022',
+    appointmentDate: '21-09-2022',
+    arrivalDate: '22-09-2022',
+    name: 'Nguyễn Văn Y',
     phonenumber: '012134511',
-    status: 'Khách hàng cũ'
-}, {
-    name: 'Nguyễn Văn G',
-    phonenumber: '012134511',
-    status: 'Khách hàng cũ'
+    status: 'Đặt cọc'
 }]

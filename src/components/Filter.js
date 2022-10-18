@@ -13,11 +13,13 @@ class Filter {
         this.$container.className = 'dropdown'
 
         this.$dropdown = document.createElement('ul')
-        this.$dropdown.className = 'dropdown-menu end-0 mt-2'
+        this.$dropdown.className = 'dropdown-menu end-0 mt-2 w-100'
         this.renderFilterItem();
 
         this.$filterButon = document.createElement('button')
-        this.$filterButon.className = 'btn btn-primary dropdown-toggle'
+        this.$filterButon.className = 'btn btn-primary dropdown-toggle d-flex justify-content-between align-items-center'
+        this.$filterButon.style.minWidth = '170px'
+
         this.$filterButon.innerHTML = 'Trạng thái'
         this.$filterButon.addEventListener('click', () => {
             this.$dropdown.classList.toggle('d-block')
