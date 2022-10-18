@@ -1,7 +1,8 @@
 import { getPage } from "../util/getPage.js";
 import Input from "./Input.js";
 import Select from "./Select.js";
-import { brandList, companyList, renderUserId, sourceList, status } from "../util/util.js"
+import { brandList, companyList, sourceList, status } from "../util/util.js"
+import Modal from "./Modal.js";
 class Register {
     $bg;
     $container;
@@ -11,7 +12,6 @@ class Register {
     $cardBodyInfo
     $titleInfo
 
-    $userId;
     $username
     $phonenumber1
     $phonenumber2
@@ -36,6 +36,11 @@ class Register {
     $bankName
     $bankNumber
 
+    $term
+    $termInput
+    $termLink
+    $termModal
+
     $btnGroup
     $btnBack
     $btnRegister
@@ -49,7 +54,7 @@ class Register {
         this.$container.classList.add('container')
 
         this.$row = document.createElement('div')
-        this.$row.className = 'row'
+        this.$row.className = 'row align-items-center'
 
         this.$header = document.createElement('h1')
         this.$header.className = 'text-center mb-3'
@@ -67,9 +72,6 @@ class Register {
         this.$titleInfo = document.createElement('h5')
         this.$titleInfo.className = 'text-medium-emphasis fw-bold mb-3'
         this.$titleInfo.innerHTML = 'Thông tin khách hàng'
-
-        this.$userId = new Input({ icon: 'bi bi-person-video2', placeholder: 'Mã cộng tác viên', isDisabled: true })
-        this.$userId.setInput(renderUserId())
 
         this.$phonenumber1 = new Input({ icon: 'bi bi-telephone-plus-fill', placeholder: 'Số điện thoại 1' })
         this.$username = new Input({ icon: 'fs-5 bi bi-person', placeholder: 'Tên cộng tác viên' })
@@ -112,6 +114,23 @@ class Register {
         this.$bankName = new Input({ icon: 'bi bi-bank2', placeholder: 'Ngân hàng' })
         this.$bankNumber = new Input({ icon: 'bi bi-123', placeholder: 'Số thẻ' })
 
+        this.$termModal = new Modal({ closeModal: this.closeModal })
+
+        this.$term = document.createElement('div')
+        this.$term.className = 'd-flex gap-2 justify-content-center mt-3'
+
+        this.$termInput = document.createElement('input')
+        this.$termInput.type = 'radio'
+
+        this.$termLink = document.createElement('a')
+        this.$termLink.className = 'link-primary'
+        this.$termLink.href = '#'
+        this.$termLink.innerHTML = 'Tôi đồng ý các điều khoản dịch vụ'
+        this.$termLink.addEventListener('click', () => {
+            this.openModal()
+        })
+
+
         this.$btnGroup = document.createElement('div')
         this.$btnGroup.className = 'mt-3 d-flex justify-content-between'
 
@@ -130,7 +149,13 @@ class Register {
         })
         this.$none = document.createElement('div')
     }
+    openModal = () => {
+        this.$bg.appendChild(this.$termModal.render())
+    }
+    closeModal = () => {
+        this.$bg.removeChild(this.$termModal.render())
 
+    }
     back() {
         sessionStorage.removeItem('isRegister')
         getPage()
@@ -138,7 +163,6 @@ class Register {
     register() {
         this.data = {
             info: {
-                userId: this.$userId.getInput().value,
                 phonenumber1: this.$phonenumber1.getInput().value,
                 username: this.$username.getInput().value,
                 phonenumber2: this.$phonenumber2.getInput().value,
@@ -161,7 +185,7 @@ class Register {
                 bankNumber: this.$bankNumber.getInput().value,
             }
         }
-        if (this.data.info.userId === '' || this.data.info.phonenumber1 === '' || this.data.info.username === '' || this.data.info.nationalId === '' || this.data.info.password === '' || this.data.info.repeatPassword === '') {
+        if (this.data.info.phonenumber1 === '' || this.data.info.username === '' || this.data.info.nationalId === '' || this.data.info.password === '' || this.data.info.repeatPassword === '') {
             alert('Vui lòng nhập đủ thông tin')
             return;
         }
@@ -171,6 +195,10 @@ class Register {
         }
         if (this.data.password !== this.data.repeatPassword) {
             alert('Mật khẩu không khớp')
+            return
+        }
+        if (!this.$termInput.checked) {
+            alert('Bạn chưa đồng ý điều khoản của chúng tôi')
             return
         }
         console.log(this.data);
@@ -183,12 +211,13 @@ class Register {
         this.$row.appendChild(this.$header)
         this.$row.appendChild(this.$colInfo)
         this.$row.appendChild(this.$colSource)
+        this.$row.appendChild(this.$term)
+
 
         this.$colInfo.appendChild(this.$cardInfo)
         this.$cardInfo.appendChild(this.$cardBodyInfo)
         this.$cardBodyInfo.appendChild(this.$titleInfo)
 
-        this.$cardBodyInfo.appendChild(this.$userId.render())
         this.$cardBodyInfo.appendChild(this.$phonenumber1.render())
         this.$cardBodyInfo.appendChild(this.$username.render())
         this.$cardBodyInfo.appendChild(this.$phonenumber2.render())
@@ -197,7 +226,6 @@ class Register {
         this.$cardBodyInfo.appendChild(this.$email.render())
         this.$cardBodyInfo.appendChild(this.$password.render())
         this.$cardBodyInfo.appendChild(this.$repeatPassword.render())
-
 
         this.$colSource.appendChild(this.$cardSource)
         this.$cardSource.appendChild(this.$cardBodySource)
@@ -216,12 +244,12 @@ class Register {
         this.$cardBodyBank.appendChild(this.$bankName.render())
         this.$cardBodyBank.appendChild(this.$bankNumber.render())
 
+        this.$term.appendChild(this.$termInput)
+        this.$term.appendChild(this.$termLink)
         this.$container.appendChild(this.$btnGroup)
         this.$btnGroup.appendChild(this.$btnBack)
         this.$btnGroup.appendChild(this.$btnRegister)
         this.$btnGroup.appendChild(this.$none)
-
-
 
         return this.$bg
     }

@@ -73,12 +73,12 @@ class Login {
         this.$cardRightBody.className = `card-body text-center`
 
         this.$cardRightTitle = document.createElement('h2')
-        this.$cardRightTitle.innerHTML = `Sign up`
+        this.$cardRightTitle.innerHTML = `Đăng ký`
 
         this.$registBtn = document.createElement('button')
         this.$registBtn.className = `btn btn-lg btn-outline-light mt-3`
         this.$registBtn.type = 'button'
-        this.$registBtn.innerHTML = `Register Now!`
+        this.$registBtn.innerHTML = `Đăng ký ngay !`
         this.$registBtn.addEventListener('click', () => {
             this.register()
         })
