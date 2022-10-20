@@ -93,7 +93,6 @@ class Customer {
             this.$item = new CustomerItem({
                 number: idx + 1,
                 booking: e.booking,
-
                 name: e.name,
                 phonenumber: e.phonenumber,
                 service: e.service,

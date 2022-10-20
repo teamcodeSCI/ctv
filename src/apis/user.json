@@ -1,10 +1,10 @@
 [{
-    "phoneNumber": "admin",
+    "phonenumber": "admin",
     "password": "1"
 }, {
-    "phoneNumber": "0123456789",
+    "phonenumber": "0123456789",
     "password": "123456aA"
 }, {
-    "phoneNumber": "0378485192",
+    "phonenumber": "0378485192",
     "password": "123456aA"
 }]

@@ -26,7 +26,7 @@ class Login {
 
     $registBtn;
 
-    $phoneNumber
+    $phonenumber
     $password;
 
     $layout
@@ -83,7 +83,7 @@ class Login {
             this.register()
         })
 
-        this.$phoneNumber = new Input({ icon: 'bi bi-phone', placeholder: 'Số điện thoại' })
+        this.$phonenumber = new Input({ icon: 'bi bi-phone', placeholder: 'Số điện thoại' })
         this.$password = new Input({ icon: 'bi bi-lock', type: 'password', placeholder: 'Mật khẩu' })
 
         this.$btnLogin = document.createElement('button')
@@ -96,16 +96,16 @@ class Login {
 
     async clickLogin() {
         loading(this.$bg, true)
-        const dataLogin = await login(this.$phoneNumber.getInput().value, this.$password.getInput().value)
+        const dataLogin = await login(this.$phonenumber.getInput().value, this.$password.getInput().value)
         loading(this.$bg, false)
         if (!dataLogin) {
-            this.$phoneNumber.fail()
+            this.$phonenumber.fail()
             this.$password.fail()
             return
         }
         localStorage.setItem('isLogin', dataLogin.isLogin)
         sessionStorage.setItem('link', 'report')
-        this.$phoneNumber.success()
+        this.$phonenumber.success()
         this.$password.success()
         getPage()
         getComponent(this.$layout.getLayout(), menu)
@@ -126,7 +126,7 @@ class Login {
         this.$card.appendChild(this.$cardLeft)
         this.$cardLeft.appendChild(this.$cardLeftBody)
         this.$cardLeftBody.appendChild(this.$cardLeftTitle)
-        this.$cardLeftBody.appendChild(this.$phoneNumber.render())
+        this.$cardLeftBody.appendChild(this.$phonenumber.render())
         this.$cardLeftBody.appendChild(this.$password.render())
         this.$cardLeftBody.appendChild(this.$password.render())
         this.$cardLeftBody.appendChild(this.$btnLogin)

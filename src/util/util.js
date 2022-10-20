@@ -163,3 +163,4 @@ export const customerList = [{
     phonenumber: '012134511',
     status: 'Đặt cọc'
 }]
+export const doc = [{ name: 'Cẩm nang tư vấn dịch vụ theo bảng giá', size: '79.3 KB', file: '/assets/files/cam-nang-tu-van-theo-gia-dich-vu.xlsx' }]

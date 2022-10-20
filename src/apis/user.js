@@ -8,30 +8,30 @@ const getAllUser = async() => {
         console.log(e)
     }
 }
-const getUserByPhoneNumber = async(phoneNumber) => {
+const getUserByPhoneNumber = async(phonenumber) => {
     try {
         const allUser = await getAllUser()
         const user = allUser.filter(e => {
-            return e.phoneNumber === phoneNumber
+            return e.phonenumber === phonenumber
         })
         return user[0]
     } catch (e) {
         console.log(e)
     }
 }
-const login = async(phoneNumber, password) => {
+const login = async(phonenumber, password) => {
     try {
-        const user = await getUserByPhoneNumber(phoneNumber)
+        const user = await getUserByPhoneNumber(phonenumber)
         if (!user) {
             console.log('user not found')
             return
         }
-        if (phoneNumber !== user.phoneNumber || password !== user.password) {
+        if (phonenumber !== user.phonenumber || password !== user.password) {
             console.log('wrong phone number or passsword')
             return
         }
         return {
-            phoneNumber: user.phoneNumber,
+            phonenumber: user.phonenumber,
             password: user.password,
             isLogin: true
         }
