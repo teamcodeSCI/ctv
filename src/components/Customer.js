@@ -49,7 +49,7 @@ class Customer {
         this.$tableRes.className = 'table-responsive'
 
         this.$table = document.createElement('table')
-        this.$table.className = 'table border table-striped'
+        this.$table.className = 'table border table-striped bg-white'
 
         this.$thead = document.createElement('thead')
 

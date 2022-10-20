@@ -23,7 +23,7 @@ class Document {
         this.$header.innerHTML = 'Tài liệu'
 
         this.$table = document.createElement('table')
-        this.$table.className = 'table border table-striped'
+        this.$table.className = 'table border table-striped bg-white'
 
         this.$thead = document.createElement('thead')
 
