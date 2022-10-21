@@ -1,3 +1,5 @@
+import { getFileSize, loading } from "../util/util.js"
+
 class DocItem {
     $container
     $number
@@ -6,7 +8,8 @@ class DocItem {
     $download
     $downloadBtn
     file
-    constructor({ number, name, size, file }) {
+    size
+    constructor({ number, name, file }) {
         this.file = file
 
         this.$container = document.createElement('tr')
@@ -18,7 +21,7 @@ class DocItem {
         this.$name.innerHTML = name || ''
 
         this.$size = document.createElement('td')
-        this.$size.innerHTML = size || ''
+        this.fileSize()
 
         this.$download = document.createElement('td')
 
@@ -28,6 +31,16 @@ class DocItem {
         this.$downloadBtn.addEventListener('click', () => {
             window.open(this.file)
         })
+    }
+    fileSize = async() => {
+        try {
+            loading(true)
+            this.$size.innerHTML = await getFileSize(this.file)
+            loading(false)
+        } catch (e) {
+            console.log(e)
+        }
+
     }
     render() {
         this.$container.appendChild(this.$number)

@@ -3,15 +3,37 @@ import Loading from "../components/Loading.js";
 const load = new Loading()
 export const app = document.getElementById('root')
 
-export const loading = (bg, isLoading) => {
+export const loading = (isLoading) => {
     if (!isLoading) {
-        bg.removeChild(load.render())
+        app.removeChild(load.render())
         return
     }
-    bg.appendChild(load.render())
+    app.appendChild(load.render())
     return
 }
 
+export const formatBytes = (bytes, decimals = 2) => {
+    if (!+bytes) return '0 Bytes'
+    const k = 1024
+    const dm = decimals < 0 ? 0 : decimals
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+}
+export const getFileSize = async(url) => {
+    try {
+        const response = await fetch(url)
+        const blob = await response.blob()
+        const size = formatBytes(blob.size)
+        return size;
+
+    } catch (e) {
+        console.log(e)
+        return toString(e)
+    }
+}
 export const companyList = [{
     code: 'KN',
     name: 'Kangnam'
@@ -163,4 +185,4 @@ export const customerList = [{
     phonenumber: '012134511',
     status: 'Đặt cọc'
 }]
-export const doc = [{ name: 'Cẩm nang tư vấn dịch vụ theo bảng giá', size: '79.3 KB', file: 'assets/files/cam-nang-tu-van-theo-gia-dich-vu.xlsx' }]
+export const doc = [{ name: 'Cẩm nang tư vấn dịch vụ theo bảng giá', file: 'assets/files/cam-nang-tu-van-theo-gia-dich-vu.xlsx' }]

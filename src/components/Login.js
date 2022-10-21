@@ -95,9 +95,9 @@ class Login {
     }
 
     async clickLogin() {
-        loading(this.$bg, true)
+        loading(true)
         const dataLogin = await login(this.$phonenumber.getInput().value, this.$password.getInput().value)
-        loading(this.$bg, false)
+        loading(false)
         if (!dataLogin) {
             this.$phonenumber.fail()
             this.$password.fail()
