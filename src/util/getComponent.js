@@ -1,8 +1,6 @@
 let currentComponent = null;
 export const setComponent = (container, component) => {
-
     if (currentComponent) {
-
         container.removeChild(currentComponent);
     }
     currentComponent = container.appendChild(component.render())
