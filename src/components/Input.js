@@ -3,7 +3,7 @@ class Input {
     $label;
     $icon;
     $input;
-    constructor({ icon, type, placeholder, isDisabled }) {
+    constructor({ icon, type, placeholder, isDisabled, value }) {
         this.$container = document.createElement('div')
         this.$container.classList.add('input-group', 'mb-3')
 
@@ -19,12 +19,10 @@ class Input {
 
         this.$input.type = type || 'text'
         this.$input.placeholder = placeholder
+        this.$input.value = value || ''
     }
     getInput() {
         return this.$input
-    }
-    setInput(value) {
-        this.$input.value = value
     }
     success() {
         this.$input.style.border = '1px solid green'

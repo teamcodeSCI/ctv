@@ -4,7 +4,7 @@ class Profile {
     $header
     $colLeft
     $colRight
-
+    data
     constructor() {
         this.$container = document.createElement('div')
         this.$container.className = 'container'
@@ -91,7 +91,6 @@ class Profile {
             placeholder: 'Chủ tài khoản',
             isDisabled: true
         })
-
     }
     render() {
         this.$container.appendChild(this.$header)
