@@ -21,6 +21,9 @@ class Input {
         this.$input.placeholder = placeholder
         this.$input.value = value || ''
     }
+    setDisabled(disabled) {
+        this.$input.disabled = disabled
+    }
     getInput() {
         return this.$input
     }

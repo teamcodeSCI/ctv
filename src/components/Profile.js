@@ -1,17 +1,34 @@
 import Input from './Input.js'
 class Profile {
-    $container
-    $header
-    $colLeft
-    $colRight
-    data
+
     constructor() {
+        this.disabled = true
         this.$container = document.createElement('div')
         this.$container.className = 'container'
 
         this.$header = document.createElement('div')
-        this.$header.className = 'fs-2 fw-semibold my-4'
-        this.$header.innerHTML = 'Thông tin cá nhân'
+        this.$header.className = 'd-flex justify-content-between align-items-center'
+
+        this.$title = document.createElement('div')
+        this.$title.className = 'fs-2 fw-semibold my-4 '
+        this.$title.innerHTML = 'Thông tin cá nhân'
+
+        this.$btnGroup = document.createElement('div')
+        this.$btnGroup.className = 'd-flex gap-2'
+
+        this.$editBtn = document.createElement('button')
+        this.$editBtn.className = 'btn btn-primary'
+        this.$editBtn.innerHTML = 'Chỉnh sửa'
+        this.$editBtn.addEventListener('click', () => {
+            this.setDisabled()
+        })
+
+        this.$saveBtn = document.createElement('button')
+        this.$saveBtn.className = 'btn btn-danger'
+        this.$saveBtn.innerHTML = 'Lưu'
+        this.$saveBtn.addEventListener('click', () => {
+            this.save()
+        })
 
         this.$content = document.createElement('div')
         this.$content.className = 'row'
@@ -92,8 +109,34 @@ class Profile {
             isDisabled: true
         })
     }
+    save = () => {
+        this.setDisabled()
+    }
+    setDisabled = () => {
+        this.$name.setDisabled(!this.disabled)
+        this.$country.setDisabled(!this.disabled)
+        this.$birth.setDisabled(!this.disabled)
+        this.$household.setDisabled(!this.disabled)
+        this.$currentPlace.setDisabled(!this.disabled)
+        this.$phonenumber.setDisabled(!this.disabled)
+        this.$nationId.setDisabled(!this.disabled)
+        this.$createdAt.setDisabled(!this.disabled)
+        this.$issuedBy.setDisabled(!this.disabled)
+        this.$accNumber.setDisabled(!this.disabled)
+        this.$branch.setDisabled(!this.disabled)
+        this.$accName.setDisabled(!this.disabled)
+
+        this.disabled = !this.disabled
+
+        this.$editBtn.innerHTML = this.disabled ? 'Chỉnh sửa' : 'Hủy bỏ'
+        this.disabled ? this.$btnGroup.removeChild(this.$saveBtn) : this.$btnGroup.appendChild(this.$saveBtn)
+    }
     render() {
         this.$container.appendChild(this.$header)
+        this.$header.appendChild(this.$title)
+        this.$header.appendChild(this.$btnGroup)
+        this.$btnGroup.appendChild(this.$editBtn)
+
         this.$container.appendChild(this.$content)
         this.$content.appendChild(this.$colLeft)
         this.$content.appendChild(this.$colRight)

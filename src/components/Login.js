@@ -115,7 +115,6 @@ class Login {
     register() {
         sessionStorage.setItem('isRegister', true)
         getPage()
-
         return
     }
     render() {
