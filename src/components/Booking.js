@@ -12,7 +12,7 @@ class Booking {
         this.$row.className = `row`
 
         this.$title = document.createElement('h1')
-        this.$title.className = `text-center`
+        this.$title.className = `text-center mb-3`
         this.$title.innerHTML = `Booking`
 
         this.$colLeft = document.createElement('div')
@@ -22,7 +22,11 @@ class Booking {
         this.$colRight.className = `col-md-6 p-2`
 
         this.$btnBox = document.createElement('div')
-        this.$btnBox.className = `col-md-6 p-2 text-center`
+        this.$btnBox.className = `col-md-12 p-2 text-center`
+
+        this.$btnConfirm = document.createElement('button')
+        this.$btnConfirm.className = 'btn btn-primary'
+        this.$btnConfirm.innerHTML = 'Xác nhận'
 
         this.$classify = new Input({ icon: 'bi bi-bar-chart', placeholder: 'Phân loại' })
         this.$bookingCode = new Input({ icon: 'bi bi-qr-code-scan', placeholder: 'Mã booking' })
@@ -34,8 +38,46 @@ class Booking {
         this.$customer = new Input({ icon: 'bi bi-door-open', placeholder: 'Khách hàng đến cửa' })
         this.$branch = new Input({ icon: 'bi bi-hospital', placeholder: 'Chi nhánh' })
 
+        this.$department = new Input({ icon: 'bi bi-ethernet', placeholder: 'Phòng ban người tạo' })
+        this.$source = new Input({ icon: 'bi bi-folder-symlink', placeholder: 'Nguồn' })
+        this.$service = new Input({ icon: 'bi bi-journal-text', placeholder: 'Dòng dịch vụ' })
+        this.$paid = new Input({ icon: 'bi bi-credit-card-2-front', placeholder: 'Đã thanh toán' })
+        this.$appointment = new Input({ icon: 'bi bi-calendar2-check', placeholder: 'Ngày hẹn lịch' })
+        this.$dateCreated = new Input({ icon: 'bi bi-calendar2-check', placeholder: 'Ngày tạo' })
+        this.$creator = new Input({ icon: 'bi bi-person-plus', placeholder: 'Người tạo' })
+        this.$status = new Input({ icon: 'bi bi-check-circle', placeholder: 'Trạng thái' })
+        this.$effect = new Input({ icon: 'bi bi-journal-arrow-down', placeholder: 'Hiệu lực' })
     }
     render() {
+        this.$bg.appendChild(this.$container)
+        this.$container.appendChild(this.$row)
+        this.$row.appendChild(this.$title)
+        this.$row.appendChild(this.$colLeft)
+        this.$row.appendChild(this.$colRight)
+        this.$row.appendChild(this.$btnBox)
+
+        this.$colLeft.appendChild(this.$classify.render())
+        this.$colLeft.appendChild(this.$bookingCode.render())
+        this.$colLeft.appendChild(this.$name.render())
+        this.$colLeft.appendChild(this.$oversea.render())
+        this.$colLeft.appendChild(this.$phone.render())
+        this.$colLeft.appendChild(this.$country.render())
+        this.$colLeft.appendChild(this.$city.render())
+        this.$colLeft.appendChild(this.$customer.render())
+        this.$colLeft.appendChild(this.$branch.render())
+
+        this.$colRight.appendChild(this.$department.render())
+        this.$colRight.appendChild(this.$source.render())
+        this.$colRight.appendChild(this.$service.render())
+        this.$colRight.appendChild(this.$paid.render())
+        this.$colRight.appendChild(this.$appointment.render())
+        this.$colRight.appendChild(this.$creator.render())
+        this.$colRight.appendChild(this.$dateCreated.render())
+        this.$colRight.appendChild(this.$status.render())
+        this.$colRight.appendChild(this.$effect.render())
+
+        this.$btnBox.appendChild(this.$btnConfirm)
+
         return this.$bg
     }
 }
