@@ -4,48 +4,6 @@ import Select from "./Select.js";
 import { brandList, companyList, sourceList, status } from "../util/util.js"
 import Modal from "./Modal.js";
 class Register {
-    $bg;
-    $container;
-    $row
-
-    $colInfo
-    $cardBodyInfo
-    $titleInfo
-
-    $username
-    $phonenumber1
-    $phonenumber2
-    $nationalId
-    $nationalIdImg
-    $email
-
-    $colSource
-    $cardBodySource
-    $titleSource
-
-    $company
-    $brand
-    $sourceGroup
-    $source
-    $status
-
-    $cardBank
-    $cardBodyBank
-    $titleBank
-
-    $bankName
-    $bankNumber
-
-    $term
-    $termInput
-    $termLink
-    $termModal
-
-    $btnGroup
-    $btnBack
-    $btnRegister
-
-    data
     constructor() {
         this.$bg = document.createElement('div')
         this.$bg.className = 'bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent'
